@@ -276,6 +276,7 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $timeout, $
   }
 
   function shouldHide () {
+    if (!hasFocus) return true;
     if (!isMinLengthMet()) return true;
   }
 
@@ -284,7 +285,7 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $timeout, $
   }
 
   function isMinLengthMet () {
-    return $scope.searchText.length >= getMinLength();
+    return $scope.searchText != null && $scope.searchText.length >= getMinLength();
   }
 
   //-- actions
